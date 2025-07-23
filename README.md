@@ -1,9 +1,12 @@
-AAVAIL Revenue Forecasting – Capstone Project
+# AAVAIL Revenue Forecasting – Capstone Project
 
-This repository contains the final submission for the IBM AI Workflow Architect Capstone Project. The project implements a time-series forecasting solution for AAVAIL's business case, focused on predicting future revenue across countries.
+This repository contains the final submission for the **IBM AI Workflow Architect Capstone Project**. The project implements a time-series forecasting solution for AAVAIL's business case, focused on predicting future revenue across countries.
 
-🔧 Project Structure
+---
 
+## 🔧 Project Structure
+
+```
 .
 ├── api.py                  # Flask API for serving predictions
 ├── model.py                # Model loading and prediction logic
@@ -15,102 +18,114 @@ This repository contains the final submission for the IBM AI Workflow Architect 
 ├── run_tests.sh            # Script to run all unit tests at once
 ├── Dockerfile              # Containerization of API
 ├── requirements.txt        # Python dependencies
+```
 
-🎓 Objectives
+---
 
-Perform exploratory data analysis (EDA) with visualizations
+## 🎓 Objectives
 
-Engineer time-series features
+* Perform exploratory data analysis (EDA) with visualizations
+* Engineer time-series features
+* Train and evaluate multiple forecasting models
+* Compare model vs baseline using performance plots
+* Build a REST API to serve model predictions
+* Implement unit testing (model, API, logging)
+* Containerize the project using Docker
+* Provide monitoring and logging mechanism
 
-Train and evaluate multiple forecasting models
+---
 
-Compare model vs baseline using performance plots
+## 📊 Models Compared
 
-Build a REST API to serve model predictions
+* **Baseline model**: Simple moving average
+* **Model 1**: Linear regression
+* **Model 2**: ARIMA or Prophet (depending on experiment)
 
-Implement unit testing (model, API, logging)
+Model performance was evaluated using **MAE**, **RMSE**, and **trend tracking** over 500+ days.
 
-Containerize the project using Docker
+---
 
-Provide monitoring and logging mechanism
+## ⚙️ How to Run Locally
 
-📊 Models Compared
+### 1. Build Docker image
 
-Baseline model: Simple moving average
-
-Model 1: Linear regression
-
-Model 2: ARIMA or Prophet (depending on experiment)
-
-Model performance was evaluated using MAE, RMSE, and trend tracking over 500+ days.
-
-⚙️ How to Run Locally
-
-1. Build Docker image
-
+```bash
 docker build -t aavail-api .
+```
 
-2. Run the container
+### 2. Run the container
 
+```bash
 docker run -p 5000:5000 aavail-api
+```
 
-API will be available at http://localhost:5000
+> The API will be available at: `http://localhost:5000`
 
-💹 API Usage
+---
 
-Endpoint
+## 💹 API Usage
 
-Description
+| Endpoint               | Description                        |
+| ---------------------- | ---------------------------------- |
+| `/predict?country=USA` | Predict for a specific country     |
+| `/predict_all`         | Predict for all countries combined |
 
-/predict?country=USA
+> Input format and response schema are shown in the notebook.
 
-Predict for a specific country
+---
 
-/predict_all
+## 📊 Monitoring & Logging
 
-Predict for all countries combined
+* Logging handled via Python `logging` module
+* Logs include timestamp, inputs, and model outputs
+* Stored in `/logs/` folder inside the container or local project
 
-Input format and response schema are shown in the notebook.
+---
 
-📊 Monitoring & Logging
+## 🔧 Unit Testing
 
-Logging is handled via Python logging module
+To run all tests:
 
-Logs include timestamp, inputs, and model outputs
-
-Stored in /logs/ folder inside the container or local project
-
-🔧 Unit Testing
-
-Run all tests with a single command:
-
+```bash
 bash run_tests.sh
+```
 
 Tests include:
 
-API functionality
+* ✅ API functionality
+* ✅ Model input/output
+* ✅ Logging checks
+* ✅ Edge case handling
 
-Model input/output
+---
 
-Logging checks
+## 👀 Visualizations
 
-Edge case handling
+* EDA time-series plots (daily revenue, views, purchases)
+* Forecasts vs actuals
+* Model comparison graphs
 
-👀 Visualizations
+> All visuals are included in `notebook_capstone.ipynb`
 
-EDA time-series plots (daily revenue, views, purchases)
+---
 
-Forecasts vs actuals
+## 🚀 Deployment Ready
 
-Model comparison graphs
+This project is **containerized**, **modular**, **unit-tested**, and **ready for deployment**.
 
-All visuals are included in notebook_capstone.ipynb
+Peer reviewers are welcome to:
 
-🚀 Deployment Ready
+* Clone the repo
+* Build the Docker image
+* Run the API
+* Review the notebook and testing suite
 
-This project is containerized, modular, tested, and ready for deployment.
+All core workflow components from ingestion to model to API and validation are covered.
 
-Peer reviewers are welcome to clone the repo, build the image, run the API, and inspect the tests and results. All core workflow components from ingestion to model to API and validation are covered.
+---
 
-Submitted by: Fabio EvertonIBM AI Workflow Architect CapstoneDate: August 2025
+**Submitted by:** Fabio Everton
+**IBM AI Workflow Architect Capstone**
+**Date:** August 2025
+
 
